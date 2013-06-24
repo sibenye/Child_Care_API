@@ -38,6 +38,7 @@ ChildCareApp::Application.routes.draw do
   
   match '/login' => 'login_credentials#login', :via => :post
   match '/logout' => 'login_credentials#logout', :via => :post
+  match '/changePassword' => 'login_credentials#change_password', :via => :post
 
 
   # The priority is based upon order of creation:
