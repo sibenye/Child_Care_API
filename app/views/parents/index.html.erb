@@ -1,0 +1,47 @@
+<h1>Listing parents</h1>
+
+<table>
+  <tr>
+    <th>Family name</th>
+    <th>Father name</th>
+    <th>Mother name</th>
+    <th>Home phone</th>
+    <th>Work phone</th>
+    <th>Mobile phone1</th>
+    <th>Mobile phone2</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip code</th>
+    <th>Email1</th>
+    <th>Email2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @parents.each do |parent| %>
+  <tr>
+    <td><%= parent.family_name %></td>
+    <td><%= parent.father_name %></td>
+    <td><%= parent.mother_name %></td>
+    <td><%= parent.home_phone %></td>
+    <td><%= parent.work_phone %></td>
+    <td><%= parent.mobile_phone1 %></td>
+    <td><%= parent.mobile_phone2 %></td>
+    <td><%= parent.address %></td>
+    <td><%= parent.city %></td>
+    <td><%= parent.state %></td>
+    <td><%= parent.zip_code %></td>
+    <td><%= parent.email1 %></td>
+    <td><%= parent.email2 %></td>
+    <td><%= link_to 'Show', parent %></td>
+    <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
+    <td><%= link_to 'Destroy', parent, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Parent', new_parent_path %>

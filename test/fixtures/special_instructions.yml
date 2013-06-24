@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  instruction: MyText
+  parent_id: 1
+  sitter_id: 1
+  job_id: 1
+
+two:
+  instruction: MyText
+  parent_id: 1
+  sitter_id: 1
+  job_id: 1

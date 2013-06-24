@@ -1,0 +1,28 @@
+CHILD APP API
+
+Available Endpoints:
+
+/registerParent method=> post
+/updateParent method=> post
+/parents method=> get; retrieves all parents
+/getParent method=> post; retrieves a single parent or all Parents linked to a Sitter
+/deleteParent - a virtual delete
+/registerSitter method=> post
+/updateSitter method=> post
+/sitters method=> get; retrieves all sitters
+/getSitter method=> post; retrieves a single Sitter or all Sitters linked to a Parent
+/deleteSitter
+/addSitter method=> post; links a sitter to a parent in sitter_parent_links table
+/removeSitter method=> post; unlinks a sitter from a parent
+/createJob method=> post
+/updateJob method=> post
+/getJob method=> post; retrieves a single job or all jobs associated with a parent
+/cancelJob - a virtual delete
+/addChild method=> post; creates a parentChildDetail
+/updateChild method=> post;
+/getChild method=> get; retrieves a single parentChildDetail or all Child belonging to a Parent
+/addInstruction method=> post; creates a specialInstruction
+/updateInstruction method=> post
+/getInstruction method=> post; retrieves a single specialInstruction
+
+

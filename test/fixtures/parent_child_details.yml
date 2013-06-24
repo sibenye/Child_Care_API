@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  parent_id: 1
+  name: MyString
+  birthday: 2013-06-23
+  medication: MyText
+  pediatrician_name: MyString
+  pediatrician_phone: MyString
+  dentist_name: MyString
+  dentist_phone: MyString
+  school: MyString
+  grade: MyString
+  activities: MyText
+  allergies: MyText
+  blood_type: MyString
+  height: MyString
+  weight: MyString
+  hair_color: MyString
+  eye_color: MyString
+  other_info: MyText
+
+two:
+  parent_id: 1
+  name: MyString
+  birthday: 2013-06-23
+  medication: MyText
+  pediatrician_name: MyString
+  pediatrician_phone: MyString
+  dentist_name: MyString
+  dentist_phone: MyString
+  school: MyString
+  grade: MyString
+  activities: MyText
+  allergies: MyText
+  blood_type: MyString
+  height: MyString
+  weight: MyString
+  hair_color: MyString
+  eye_color: MyString
+  other_info: MyText

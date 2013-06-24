@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  age: MyString
+  mobile_phone: MyString
+  email: MyString
+  parent_name: MyString
+  parent_phone: MyString
+  parent_address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  contact_preference: MyString
+  hourly_rate: 9.99
+  rating: MyString
+  skills: MyText
+  availability_ind: false
+  deleted_at: 2013-06-23 06:20:27
+
+two:
+  first_name: MyString
+  last_name: MyString
+  age: MyString
+  mobile_phone: MyString
+  email: MyString
+  parent_name: MyString
+  parent_phone: MyString
+  parent_address: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  contact_preference: MyString
+  hourly_rate: 9.99
+  rating: MyString
+  skills: MyText
+  availability_ind: false
+  deleted_at: 2013-06-23 06:20:27
