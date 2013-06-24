@@ -23,16 +23,21 @@ ChildCareApp::Application.routes.draw do
   match '/getJob' => 'jobs#show', :via => :post
   match '/cancelJob' => 'jobs#destroy', :via => :post
 
-  match '/addSitter' => ':sitter_parent_links#create', :via => :post
-  match '/removeSitter' => ':sitter_parent_links#destroy', :via => :post
+  match '/addSitter' => 'sitter_parent_links#create', :via => :post
+  match '/removeSitter' => 'sitter_parent_links#destroy', :via => :post
 
-  match '/addChild' => ':parent_child_details#create', :via => :post
-  match '/updateChild' => ':parent_child_details#update', :via => :post
-  match '/getChild' => ':parent_child_details#show', :via => :post
+  match '/addChild' => 'parent_child_details#create', :via => :post
+  match '/updateChild' => 'parent_child_details#update', :via => :post
+  match '/getChild' => 'parent_child_details#show', :via => :post
 
-  match '/addInstruction' => ':special_instructions#create', :via => :post
-  match '/UpdateInstruction' => ':special_instructions#update', :via => :post
-  match '/getInstruction' => ':special_instructions#show', :via => :post
+  match '/addInstruction' => 'special_instructions#create', :via => :post
+  match '/UpdateInstruction' => 'special_instructions#update', :via => :post
+  match '/getInstruction' => 'special_instructions#show', :via => :post
+  
+  match '/acceptJob' => 'accepted_jobs#create', :via => :post
+  
+  match '/login' => 'login_credentials#login', :via => :post
+  match '/logout' => 'login_credentials#logout', :via => :post
 
 
   # The priority is based upon order of creation:
