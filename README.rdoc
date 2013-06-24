@@ -46,4 +46,12 @@ Available Endpoints:
 
 /getInstruction method=> post; retrieves a single specialInstruction
 
+/acceptJob method => post
+
+/login
+
+/logout
+
+/changePassword
+
 

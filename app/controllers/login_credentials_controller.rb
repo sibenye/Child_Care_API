@@ -1,0 +1,2 @@
+class LoginCredentialsController < ApplicationController
+end
