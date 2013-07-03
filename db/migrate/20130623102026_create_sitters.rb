@@ -8,7 +8,7 @@ class CreateSitters < ActiveRecord::Migration
       t.string :email
       t.string :parent_name
       t.string :parent_phone
-      t.string :parent_address
+      t.string :address
       t.string :city
       t.string :state
       t.string :zip_code
