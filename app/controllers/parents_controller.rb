@@ -44,7 +44,7 @@ class ParentsController < ApplicationController
       if @parent.save
         format.json { render :json => @parent, :status => :created}
       else
-        format.json { render :json => Parent.formatErrors(@parent.errors), :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @parent.errors}, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,7 +56,7 @@ class ParentsController < ApplicationController
       if @parent.update_attributes(params[:parent])
         format.json { render :json => @parent, :status => :ok}
       else
-        format.json { render :json => @parent.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @parent.errors}, :status => :unprocessable_entity }
       end
     end
   end

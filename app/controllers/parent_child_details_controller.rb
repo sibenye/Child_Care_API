@@ -19,7 +19,7 @@ class ParentChildDetailsController < ApplicationController
       if @parentChildDetail.save
         format.json { render :json => @parentChildDetail, :status => :created}
       else
-        format.json { render :json => @parentChildDetail.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @parentChildDetail.errors}, :status => :unprocessable_entity }
       end
     end
   end
@@ -31,7 +31,7 @@ class ParentChildDetailsController < ApplicationController
       if @parentChildDetail.update_attributes(params[:parent_child_detail])
         format.json { render :json => @parentChildDetail, :status => :created }
       else
-        format.json { render :json => @parentChildDetail.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @parentChildDetail.errors}, :status => :unprocessable_entity }
       end
     end
   end

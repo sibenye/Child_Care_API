@@ -7,7 +7,7 @@ class SitterParentLinksController < ApplicationController
       if @sitterParentLink.save
         format.json { render :json => @sitterParentLink, :status => :created}
       else
-        format.json { render :json => @sitterParentLink.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @sitterParentLink.errors}, :status => :unprocessable_entity }
       end
     end
   end

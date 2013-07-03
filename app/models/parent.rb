@@ -1,7 +1,7 @@
 class Parent < ActiveRecord::Base
   attr_accessible :address, :city, :deleted_at, :email1, :email2, :family_name, :father_name, :home_phone, :mobile_phone1, :mobile_phone2, :mother_name, :state, :work_phone, :zip_code
   
-  validates :address, :city, :email1, :family_name, :home_phone, :mobile_phone1, :state, :zip_code, :presence => {:message => 'Required parameter not provided'}
+  validates :address, :city, :email1, :family_name, :home_phone, :mobile_phone1, :state, :zip_code, :presence => {:message => 'Required'}
   
   
   def self.formatErrors(errors)

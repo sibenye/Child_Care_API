@@ -27,7 +27,7 @@ class SpecialInstructionsController < ApplicationController
       if @specialInstruction.save
         format.json { render :json => @specialInstruction, :status => :created}
       else
-        format.json { render :json => @specialInstruction.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @specialInstruction.errors}, :status => :unprocessable_entity }
       end
     end
   end

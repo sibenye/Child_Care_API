@@ -28,7 +28,7 @@ class SittersController < ApplicationController
       if @sitter.save
         format.json { render :json => @sitter, :status => :created}
       else
-        format.json { render :json => @sitter.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @sitter.errors}, :status => :unprocessable_entity }
       end
     end
   end
@@ -40,7 +40,7 @@ class SittersController < ApplicationController
       if @sitter.update_attributes(params[:sitter])
         format.json { render :json => @sitter, :status => :ok }
       else
-        format.json { render :json => @sitter.errors, :status => :unprocessable_entity }
+        format.json { render :json => {:errors => @sitter.errors}, :status => :unprocessable_entity }
       end
     end
   end
