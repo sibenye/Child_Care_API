@@ -5,7 +5,7 @@ class ParentsController < ApplicationController
     @parents = fetchNonDeleted(@parents)
     #debugger
     respond_to do |format|
-      format.json { render :json => @parents }
+      format.json { render :json => convertParentResponse(@parents) }
     end
   end
 
@@ -42,7 +42,7 @@ class ParentsController < ApplicationController
     @parent = Parent.new(@parent_params)
     respond_to do |format|
       if @parent.save
-        format.json { render :json => @parent, :status => :created}
+        format.json { render :json => convertParentResponse(@parent), :status => :created}
       else
         format.json { render :json => {:errors => @parent.errors}, :status => :unprocessable_entity }
       end
@@ -54,7 +54,7 @@ class ParentsController < ApplicationController
 
     respond_to do |format|
       if @parent.update_attributes(params[:parent])
-        format.json { render :json => @parent, :status => :ok}
+        format.json { render :json => convertParentResponse(@parent), :status => :ok}
       else
         format.json { render :json => {:errors => @parent.errors}, :status => :unprocessable_entity }
       end

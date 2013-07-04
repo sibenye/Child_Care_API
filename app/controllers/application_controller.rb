@@ -17,6 +17,46 @@ class ApplicationController < ActionController::Base
     obj.update_attributes(:deleted_at => Date.today)
   end
   
+  def convertParentResponse(parentObj)
+    if (parentObj.respond_to?(:map)) then
+      return parentObj.map do |parent| 
+            {
+            :ParentId => parent.id, 
+            :familyName => parent.family_name, 
+            :fatherName => parent.father_name, 
+            :motherName => parent.mother_name, 
+            :address => parent.address, 
+            :city => parent.city, 
+            :state => parent.state, 
+            :zipCode => parent.zip_code, 
+            :email => parent.email1, 
+            :alternateEmail => parent.email2, 
+            :homePhone => parent.home_phone, 
+            :mobilePhone => parent.mobile_phone1, 
+            :alternateMobilePhone => parent.mobile_phone2, 
+            :workPhone => parent.work_phone
+          } 
+        end
+    else
+      return {
+        :ParentId => parentObj.id, 
+        :familyName => parentObj.family_name, 
+        :fatherName => parentObj.father_name, 
+        :motherName => parentObj.mother_name, 
+        :address => parentObj.address, 
+        :city => parentObj.city, 
+        :state => parentObj.state, 
+        :zipCode => parentObj.zip_code, 
+        :email => parentObj.email1, 
+        :alternateEmail => parentObj.email2, 
+        :homePhone => parentObj.home_phone, 
+        :mobilePhone => parentObj.mobile_phone1, 
+        :alternateMobilePhone => parentObj.mobile_phone2, 
+        :workPhone => parentObj.work_phone
+      } 
+    end
+  end
+  
   def checkParams(required_fields, obj)
     #debugger
     required_fields.each do |r|
