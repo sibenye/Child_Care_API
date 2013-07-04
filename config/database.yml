@@ -12,11 +12,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: child_care_app_development
+  database: heroku_38593e8a6af20fa
   pool: 5
-  username: root
-  password: 14frances
-  host: localhost
+  username: b994de2c53f3bb
+  password: 228c754f
+  host: us-cdbr-east-04.cleardb.com
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
