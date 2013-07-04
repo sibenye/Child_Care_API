@@ -5,42 +5,43 @@ ChildCareApp::Application.routes.draw do
  # resources :parent_child_details
  # resources :sitter_parent_links
  # resources :special_instructions
-  
-  match '/registerParent' => 'parents#create', :via => :post, :defaults => { :format => 'json' }
-  match '/updateParent' => 'parents#update', :via => :post, :defaults => { :format => 'json' }
-  match '/parents' => 'parents#index', :via => :get, :defaults => { :format => 'json' }
-  match '/getParent' => 'parents#show', :via => :post, :defaults => { :format => 'json' }
-  match '/deleteParent' => 'parents#destroy', :via => :post, :defaults => { :format => 'json' }
-
-  match '/registerSitter' => 'sitters#create', :via => :post, :defaults => { :format => 'json' }
-  match '/updateSitter' => 'sitters#update', :via => :post, :defaults => { :format => 'json' }
-  match '/sitters' => 'sitters#index', :via => :get, :defaults => { :format => 'json' }
-  match '/getSitter' => 'sitters#show', :via => :post, :defaults => { :format => 'json' }
-  match '/deleteSitter' => 'sitters#destroy', :via => :post, :defaults => { :format => 'json' }
-  
-  match '/createJob' => 'jobs#create', :via => :post, :defaults => { :format => 'json' }
-  match '/updateJob' => 'jobs#update', :via => :post, :defaults => { :format => 'json' }
-  match '/getJob' => 'jobs#show', :via => :post, :defaults => { :format => 'json' }
-  match '/cancelJob' => 'jobs#destroy', :via => :post, :defaults => { :format => 'json' }
-
-  match '/addSitter' => 'sitter_parent_links#create', :via => :post, :defaults => { :format => 'json' }
-  match '/removeSitter' => 'sitter_parent_links#destroy', :via => :post, :defaults => { :format => 'json' }
-
-  match '/addChild' => 'parent_child_details#create', :via => :post, :defaults => { :format => 'json' }
-  match '/updateChild' => 'parent_child_details#update', :via => :post, :defaults => { :format => 'json' }
-  match '/getChild' => 'parent_child_details#show', :via => :post, :defaults => { :format => 'json' }
-
-  match '/addInstruction' => 'special_instructions#create', :via => :post, :defaults => { :format => 'json' }
-  match '/UpdateInstruction' => 'special_instructions#update', :via => :post, :defaults => { :format => 'json' }
-  match '/getInstruction' => 'special_instructions#show', :via => :post, :defaults => { :format => 'json' }
-  
-  match '/acceptJob' => 'accepted_jobs#create', :via => :post, :defaults => { :format => 'json' }
-  
-  match '/login' => 'login_credentials#login', :via => :post, :defaults => { :format => 'json' }
-  match '/logout' => 'login_credentials#logout', :via => :post, :defaults => { :format => 'json' }
-  match '/changePassword' => 'login_credentials#change_password', :via => :post, :defaults => { :format => 'json' }
-
-
+  #namespace :controllers, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      match '/registerParent' => 'parents#create', :via => :post, :defaults => { :format => 'json' }
+      match '/updateParent' => 'parents#update', :via => :post, :defaults => { :format => 'json' }
+      match '/parents' => 'parents#index', :via => :get, :defaults => { :format => 'json' }
+      match '/getParent' => 'parents#show', :via => :post, :defaults => { :format => 'json' }
+      match '/deleteParent' => 'parents#destroy', :via => :post, :defaults => { :format => 'json' }
+    
+      match '/registerSitter' => 'sitters#create', :via => :post, :defaults => { :format => 'json' }
+      match '/updateSitter' => 'sitters#update', :via => :post, :defaults => { :format => 'json' }
+      match '/sitters' => 'sitters#index', :via => :get, :defaults => { :format => 'json' }
+      match '/getSitter' => 'sitters#show', :via => :post, :defaults => { :format => 'json' }
+      match '/deleteSitter' => 'sitters#destroy', :via => :post, :defaults => { :format => 'json' }
+      
+      match '/createJob' => 'jobs#create', :via => :post, :defaults => { :format => 'json' }
+      match '/updateJob' => 'jobs#update', :via => :post, :defaults => { :format => 'json' }
+      match '/getJob' => 'jobs#show', :via => :post, :defaults => { :format => 'json' }
+      match '/cancelJob' => 'jobs#destroy', :via => :post, :defaults => { :format => 'json' }
+    
+      match '/addSitter' => 'sitter_parent_links#create', :via => :post, :defaults => { :format => 'json' }
+      match '/removeSitter' => 'sitter_parent_links#destroy', :via => :post, :defaults => { :format => 'json' }
+    
+      match '/addChild' => 'parent_child_details#create', :via => :post, :defaults => { :format => 'json' }
+      match '/updateChild' => 'parent_child_details#update', :via => :post, :defaults => { :format => 'json' }
+      match '/getChild' => 'parent_child_details#show', :via => :post, :defaults => { :format => 'json' }
+    
+      match '/addInstruction' => 'special_instructions#create', :via => :post, :defaults => { :format => 'json' }
+      match '/UpdateInstruction' => 'special_instructions#update', :via => :post, :defaults => { :format => 'json' }
+      match '/getInstruction' => 'special_instructions#show', :via => :post, :defaults => { :format => 'json' }
+      
+      match '/acceptJob' => 'accepted_jobs#create', :via => :post, :defaults => { :format => 'json' }
+      
+      match '/login' => 'login_credentials#login', :via => :post, :defaults => { :format => 'json' }
+      match '/logout' => 'login_credentials#logout', :via => :post, :defaults => { :format => 'json' }
+      match '/changePassword' => 'login_credentials#change_password', :via => :post, :defaults => { :format => 'json' }
+    end
+  #end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
