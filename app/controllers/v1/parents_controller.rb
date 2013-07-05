@@ -11,10 +11,10 @@ module V1
     end
   
     def show
-      if params[:sitter_id]
-        @parent = SitterParentLink.findParentsLinkedToSitter(params[:sitter_id])
+      if params[:sitterId]
+        @parent = SitterParentLink.findParentsLinkedToSitter(params[:sitterId])
       else
-        @parent = Parent.find(params[:id])
+        @parent = Parent.find(params[:parentId])
       end
   
       respond_to do |format|
@@ -39,7 +39,7 @@ module V1
    # end
     
     def create
-      @parent_params = params[:parent]
+      @parent_params = convertParentRequest(params[:parent])
       @parent = Parent.new(@parent_params)
       respond_to do |format|
         if @parent.save
@@ -51,10 +51,10 @@ module V1
     end
   
     def update
-      @parent = Parent.find(params[:id])
+      @parent = Parent.find(params[:parentId])
   
       respond_to do |format|
-        if @parent.update_attributes(params[:parent])
+        if @parent.update_attributes(convertParentRequest(params[:parent]))
           format.json { render :json => convertParentResponse(@parent), :status => :ok}
         else
           format.json { render :json => {:errors => @parent.errors}, :status => :unprocessable_entity }
@@ -63,7 +63,7 @@ module V1
     end
   
     def destroy
-      @parent = Parent.find(params[:id])
+      @parent = Parent.find(params[:parentId])
       visualDestroy(@parent)
   
       respond_to do |format|
@@ -72,11 +72,62 @@ module V1
       end
     end
     
+    def convertParentRequest(parentObj)
+      if (parentObj == nil or parentObj == {})
+        return parentObj
+      end
+      parent = Hash.new("")
+      if parentObj[:parentId] != nil then
+        parent[:id] = parentObj[:parentId]
+      end
+      if parentObj[:familyName] != nil then
+        parent[:family_name] = parentObj[:familyName]
+      end
+      if parentObj[:fatherName] != nil then
+        parent[:father_name] = parentObj[:fatherName]
+      end
+      if parentObj[:motherName] != nil then
+        parent[:mother_name] = parentObj[:motherName]
+      end
+      if parentObj[:address] != nil then
+        parent[:address] = parentObj[:address]
+      end
+      if parentObj[:city] != nil then
+        parent[:city] = parentObj[:city]
+      end
+      if parentObj[:state] != nil then
+        parent[:state] = parentObj[:state]
+      end
+      if parentObj[:zipCode] != nil then
+        parent[:zip_code] = parentObj[:zipCode]
+      end
+      if parentObj[:email] != nil then
+        parent[:email1] = parentObj[:email]
+      end
+      if parentObj[:alternateEmail] != nil then
+        parent[:email2] = parentObj[:alternateEmail]
+      end
+      if parentObj[:homePhone] != nil then
+        parent[:home_phone] = parentObj[:homePhone]
+      end
+      if parentObj[:mobilePhone] != nil then
+        parent[:mobile_phone1] = parentObj[:mobilePhone]
+      end
+      if parentObj[:alternateMobilePhone] != nil then
+        parent[:mobile_phone2] = parentObj[:alternateMobilePhone]
+      end
+      if parentObj[:workPhone] != nil then
+        parent[:work_phone] = parentObj[:workPhone]
+      end
+      
+      return parent
+    end
+    
     def convertParentResponse(parentObj)
       if (parentObj.respond_to?(:map)) then
         return parentObj.map do |parent| 
               {
-              :ParentId => parent.id, 
+              :parentId => parent.id, 
               :familyName => parent.family_name, 
               :fatherName => parent.father_name, 
               :motherName => parent.mother_name, 
@@ -92,9 +143,9 @@ module V1
               :workPhone => parent.work_phone
             } 
           end
-      else
+      elsif (parentObj != nil and parentObj != {})
         return {
-          :ParentId => parentObj.id, 
+          :parentId => parentObj.id, 
           :familyName => parentObj.family_name, 
           :fatherName => parentObj.father_name, 
           :motherName => parentObj.mother_name, 
@@ -108,7 +159,9 @@ module V1
           :mobilePhone => parentObj.mobile_phone1, 
           :alternateMobilePhone => parentObj.mobile_phone2, 
           :workPhone => parentObj.work_phone
-        } 
+        }
+      else
+        return parentObj
       end
     end
     

@@ -5,8 +5,7 @@ ChildCareApp::Application.routes.draw do
  # resources :parent_child_details
  # resources :sitter_parent_links
  # resources :special_instructions
-  #namespace :controllers, defaults: {format: 'json'} do
-    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+   scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       match '/registerParent' => 'parents#create', :via => :post, :defaults => { :format => 'json' }
       match '/updateParent' => 'parents#update', :via => :post, :defaults => { :format => 'json' }
       match '/parents' => 'parents#index', :via => :get, :defaults => { :format => 'json' }
@@ -40,8 +39,8 @@ ChildCareApp::Application.routes.draw do
       match '/login' => 'login_credentials#login', :via => :post, :defaults => { :format => 'json' }
       match '/logout' => 'login_credentials#logout', :via => :post, :defaults => { :format => 'json' }
       match '/changePassword' => 'login_credentials#change_password', :via => :post, :defaults => { :format => 'json' }
-    end
-  #end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
